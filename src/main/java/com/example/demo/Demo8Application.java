@@ -15,8 +15,8 @@ public class Demo8Application {
         Bot bot = new Bot();
         botsApi.registerBot(bot);
 
-        ChatGpt chatGpt=new ChatGpt( "https://api.openai.com/v1/chat/completions","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");
-               System.out.println(chatGpt.chatGPT("hello, how are you? Can you tell me what's a Fibonacci Number?"));
+      /*  ChatGpt chatGpt=new ChatGpt( "https://api.openai.com/v1/chat/completions","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");
+               System.out.println(chatGpt.chatGPT("hello, how are you? Can you tell me what's a Fibonacci Number?"));*/
        // bot.sendText(bot.userWhoSentMessage, "Hello World!");*/
     }
 

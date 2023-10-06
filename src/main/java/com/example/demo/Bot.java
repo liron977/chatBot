@@ -8,8 +8,9 @@ import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Bot extends TelegramLongPollingBot{
-   private Long userWhoSentMessage;
-   private String message;
+    private Long userWhoSentMessage;
+    private String message;
+    private  Long chatId;
 
     public String getMessage() {
         return message;
@@ -42,10 +43,13 @@ public class Bot extends TelegramLongPollingBot{
         Message msg = update.getMessage();
         User user = msg.getFrom();
         setUserWhoSentMessage(user.getId());
+        chatId = msg.getChatId();
+        System.out.println(user.getId()+chatId);
         setMessage(msg.getText());
 
         System.out.println(user.getFirstName() + " wrote " + msg.getText());
         sendText(userWhoSentMessage, "Hello World!");
+
     }
     public void sendText(Long who, String what){
         SendMessage sm = SendMessage.builder()
@@ -57,4 +61,5 @@ public class Bot extends TelegramLongPollingBot{
             throw new RuntimeException(e);      //Any error will be printed here
         }
     }
+
 }

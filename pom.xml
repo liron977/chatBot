@@ -160,13 +160,33 @@
             <artifactId>spring-data-mongodb</artifactId>
             <version>4.1.4</version>
         </dependency>
-    </dependencies>
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.12.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sirayan.genericdb-mongo</groupId>
+            <artifactId>generic-db</artifactId>
+            <version>0.0.3</version>
+        </dependency>
 
+    </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

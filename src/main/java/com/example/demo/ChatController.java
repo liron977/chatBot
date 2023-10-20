@@ -12,7 +12,7 @@ public class ChatController {
    ChatService chatService;
     @RequestMapping("/addNewChat")
     @ResponseBody
-    public String addBook(@RequestParam("chatId") long chatId, @RequestParam("message") String message,
+    public String addMessage(@RequestParam("chatId") long chatId, @RequestParam("message") String message,
                           @RequestParam("userWhoSentMessage")Long userWhoSentMessage){
         if(chatService.addChatBot(chatId,message,userWhoSentMessage) != null){
             return "Book got  Added Successfully";

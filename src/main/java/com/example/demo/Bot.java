@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -8,6 +10,9 @@ import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Bot extends TelegramLongPollingBot{
+
+
+
     private Long userWhoSentMessage;
     private String message;
     private  Long chatId;
@@ -47,6 +52,11 @@ public class Bot extends TelegramLongPollingBot{
         System.out.println(user.getId()+chatId);
         setMessage(msg.getText());
 
+        ChatController chatController = new ChatController();
+
+
+        String result = chatController.addMessage(chatId, msg.getText(), user.getId());
+        System.out.println(result);
         System.out.println(user.getFirstName() + " wrote " + msg.getText());
         sendText(userWhoSentMessage, "Hello World!");
 
